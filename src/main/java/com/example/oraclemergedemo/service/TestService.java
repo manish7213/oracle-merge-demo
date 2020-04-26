@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.oraclemergedemo.bo.CustomerImport;
 import com.example.oraclemergedemo.bo.GenericBo;
+import com.example.oraclemergedemo.dao.CustomerDao;
 import com.example.oraclemergedemo.dao.CustomerImportRepository;
 
 @Service
@@ -14,6 +15,9 @@ public class TestService {
 	
 	@Autowired
 	private CustomerImportRepository customerImportRepository;
+	
+	@Autowired
+	private CustomerDao customerDao;
 	
 	@Autowired
 	private BatchService batchService;
@@ -34,6 +38,7 @@ private void processPersonData() {
 
 private void processCustomerData() {
 	GenericBo.setBatchNumber("Second Batch");
+	customerDao.truncateTable();
 	batchService.processBatchJob();
 }
 

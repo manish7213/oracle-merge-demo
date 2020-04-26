@@ -47,5 +47,10 @@ public class CustomerDao {
 		 List<String> compositeKeys = list.stream().map(Object::toString).collect(Collectors.toList());
 		return compositeKeys;
 	}
+	
+	public void truncateTable() {
+		
+		jdbcTemplate.update("TRUNCATE TABLE PERSON_DESTINATION");
+	}
 
 }

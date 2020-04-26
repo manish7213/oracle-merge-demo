@@ -12,7 +12,7 @@ public class BatchScheduler {
 	@Autowired
 	private TestService testService;
 	
-	@Scheduled(cron = "*/5 * * * *")
+	@Scheduled(cron = "0 13 0 1/1 * *")
 	public void taskScheduler() {
 		System.out.println("STARTING JOB");
 		testService.processData();
